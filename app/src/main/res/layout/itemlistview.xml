@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/txt_id_List"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="50sp"/>
+
+    <TextView
+        android:id="@+id/sensor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/txt_id_List"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="5dp"
+        android:text="Sensor 1 :"
+        android:layout_toRightOf="@+id/txt_id_List" />
+
+    <TextView
+        android:id="@+id/sensor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/txt_id_List"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/sensor1"
+        android:layout_marginBottom="5dp"
+        android:text="Sensor 2 :"
+        android:layout_toRightOf="@+id/txt_id_List" />
+
+    <TextView
+        android:id="@+id/sensor3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/txt_id_List"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/sensor2"
+        android:layout_marginBottom="5dp"
+        android:text="Sensor 3 :"
+        android:layout_toRightOf="@+id/txt_id_List" />
+
+    <TextView
+        android:id="@+id/sensor4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/txt_sensor1_list"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="5dp"
+        android:text="Sensor 4 :"
+        android:layout_toRightOf="@+id/txt_sensor1_list" />
+
+    <TextView
+        android:id="@+id/tanggal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/txt_sensor2_list"
+        android:layout_below="@+id/sensor4"
+        android:layout_marginLeft="20dp"
+        android:text="Tanggal  :"
+        android:layout_toRightOf="@+id/txt_sensor2_list" />
+
+    <TextView
+        android:id="@+id/txt_sensor1_list"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/sensor1"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="0"
+        android:layout_toRightOf="@id/sensor1"/>
+
+    <TextView
+        android:id="@+id/txt_sensor2_list"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/sensor2"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/txt_sensor1_list"
+        android:text="0"
+        android:layout_toRightOf="@id/sensor2" />
+
+    <TextView
+        android:id="@+id/txt_sensor3_list"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/sensor3"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/txt_sensor2_list"
+        android:text="0"
+        android:layout_toRightOf="@id/sensor3"/>
+
+    <TextView
+        android:id="@+id/txt_sensor4_list"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/sensor4"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="0"
+        android:layout_toRightOf="@id/sensor4"/>
+
+    <TextView
+        android:id="@+id/txt_tanggal_list"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/tanggal"
+        android:layout_below="@id/txt_sensor4_list"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="2019-04-12"
+        android:layout_toRightOf="@id/tanggal"/>
+
+</RelativeLayout>

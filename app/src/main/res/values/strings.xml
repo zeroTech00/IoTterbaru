@@ -1,0 +1,149 @@
+<resources>
+    <string name="app_name">Scratch IoT</string>
+
+    <string name="data">[{
+                            "id": 1,
+                            "sensor1": "10",
+                            "sensor2": "20",
+                            "sensor3": "30",
+                            "sensor4": "40",
+                            "tanggal": "2019-04-10"
+                            },
+                            {
+                            "id": 2,
+                            "sensor1": "11",
+                            "sensor2": "21",
+                            "sensor3": "31",
+                            "sensor4": "41",
+                            "tanggal": "2019-04-10"
+                            },
+                            {
+                            "id": 3,
+                            "sensor1": "12",
+                            "sensor2": "22",
+                            "sensor3": "32",
+                            "sensor4": "42",
+                            "tanggal": "2019-04-10"
+                            },
+                            {
+                            "id": 4,
+                            "sensor1": "13",
+                            "sensor2": "23",
+                            "sensor3": "33",
+                            "sensor4": "43",
+                            "tanggal": "2019-04-11"
+                            },
+                            {
+                            "id": 5,
+                            "sensor1": "14",
+                            "sensor2": "24",
+                            "sensor3": "34",
+                            "sensor4": "44",
+                            "tanggal": "2019-04-11"
+                            },
+                            {
+                            "id": 6,
+                            "sensor1": "15",
+                            "sensor2": "25",
+                            "sensor3": "35",
+                            "sensor4": "45",
+                            "tanggal": "2019-04-11"
+                            }]</string>
+
+    <string name="dataJson">
+                            [{
+                            "id": 1,
+                            "sensor1": "A",
+                            "alamat": "Bandung"
+                            },
+                            {
+                            "id": 2,
+                            "sensor1": "B",
+                            "alamat": "Jakarta"
+                            },
+                            {
+                            "id": 3,
+                            "sensor1": "C",
+                            "alamat": "Bali"
+                            }]
+    </string>
+
+    <string-array name="Array_dataID">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="Array_dataSensor1">
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+    </string-array>
+
+    <string-array name="Array_dataSensor2">
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+    </string-array>
+
+    <string-array name="Array_dataSensor3">
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+    </string-array>
+
+    <string-array name="Array_dataSensor4">
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+    </string-array>
+
+    <string-array name="Array_tanggal">
+        <item>2019-04-01</item>
+        <item>2019-04-02</item>
+        <item>2019-04-03</item>
+        <item>2019-04-04</item>
+        <item>2019-04-05</item>
+        <item>2019-04-06</item>
+        <item>2019-04-07</item>
+        <item>2019-04-08</item>
+        <item>2019-04-09</item>
+        <item>2019-04-10</item>
+    </string-array>
+
+</resources>
