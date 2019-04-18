@@ -39,6 +39,7 @@ public class SplashScreen extends AppCompatActivity {
 
     public asynSyncDataServer asynDS;
     public asyncSaveDatabase asynDB;
+    public asyncSkipSync asynSkip;
 
     //=================== JSON ====================================================
     public static final String tag_keyInfoConnectServer = "keyInfoConnectServer";
@@ -91,7 +92,7 @@ public class SplashScreen extends AppCompatActivity {
 
         Log.d(TAG, "==================================================");
         Log.d(TAG, "==================================================");
-        Log.d(TAG, "===================awal running===================");
+        Log.d(TAG, "===================awal running splash===================");
 
         String IDdata = mDB.latest("ID");
 
@@ -138,7 +139,7 @@ public class SplashScreen extends AppCompatActivity {
 
         @Override
         public void onTick(long millisUntilFinished) {
-            Log.d(TAG, "onTick: " + millisUntilFinished/1000);
+            Log.d(TAG, "onTick: " + millisUntilFinished / 1000);
         }
 
         @Override
@@ -202,21 +203,42 @@ public class SplashScreen extends AppCompatActivity {
 
                 publishProgress(lastIDtoServer);
 
+
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+                Log.d(TAG, "NullPointerException: ");
+
             } catch (JSONException e) {
                 e.printStackTrace();
+                Log.d(TAG, "JSONException: ");
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+                Log.d(TAG, "RuntimeException: ");
             }
 
             return jsonObj;
+//            retun null;
         }
 
         @Override
         protected void onPostExecute(JSONObject jsonObject) {
             super.onPostExecute(jsonObject);
+            Log.d(TAG, "onPostExecute: ");
 
-            jsonObjectFromAsyn = jsonObject;
+            try {
+                jsonObjectFromAsyn = jsonObject;
+                asynDB = new asyncSaveDatabase();
+                asynDB.execute();
 
-            asynDB = new asyncSaveDatabase();
-            asynDB.execute();
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+                Log.d(TAG, "NullPointerException: ");
+
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+                Log.d(TAG, "RuntimeException: ");
+            }
+
 
         }
     }
@@ -324,9 +346,9 @@ public class SplashScreen extends AppCompatActivity {
 
                     publishProgress(syncData, syncDataAkhir, statusSkip);
 
-                    if(syncDataAkhir > 100) {
+                    if (syncDataAkhir > 100) {
                         Thread.sleep(25);
-                    }  else if(syncDataAkhir > 50 && syncDataAkhir <= 100) {
+                    } else if (syncDataAkhir > 50 && syncDataAkhir <= 100) {
                         Thread.sleep(40);
                     } else {
                         Thread.sleep(70);
@@ -346,10 +368,20 @@ public class SplashScreen extends AppCompatActivity {
                 return Integer.toString(statusSkip);
 
 
-            } catch (JSONException e) {
+            } catch (NullPointerException e) {
                 e.printStackTrace();
+                Log.d(TAG, "NullPointerException 2: ");
+
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+                Log.d(TAG, "RuntimeException 2: ");
             } catch (InterruptedException e) {
                 e.printStackTrace();
+                Log.d(TAG, "InterruptedException 2: ");
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Log.d(TAG, "JSONException 2: ");
+
             }
 
             Log.d(TAG, "==============================");
@@ -361,16 +393,32 @@ public class SplashScreen extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-            Log.d(TAG, "statusSkip: " + s);
+            try {
+                Log.d(TAG, "statusSkip: " + s);
 
-            if (s.equals("1")) {
-                new asyncSkipSync().execute();
-            } else {
-                if(statusTimerSplash) {
-                    Intent IntentMain = new Intent(SplashScreen.this, MainActivity.class);
-                    startActivity(IntentMain);
+                if (s.equals("1")) {
+                    asynSkip = new asyncSkipSync();
+                    asynSkip.execute();
+                } else {
+                    if (statusTimerSplash) {
+                        Intent IntentMain = new Intent(SplashScreen.this, MainActivity.class);
+                        startActivity(IntentMain);
+                    }
                 }
+
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+                Log.d(TAG, "NullPointerException 3: ");
+                asynSkip = new asyncSkipSync();
+                asynSkip.execute();
+                Log.d(TAG, "Run asyn 3: ");
+
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+                Log.d(TAG, "RuntimeException 3: ");
             }
+
+
         }
     }
 
@@ -395,11 +443,13 @@ public class SplashScreen extends AppCompatActivity {
                 l = z;
                 m = 300;
                 try {
-                    Thread.sleep(10);
+                    Thread.sleep(20);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 publishProgress(k, l, m);
+
+                Log.d(TAG, "doInBackground: " + l + " " + z);
             }
 
             return null;
@@ -408,9 +458,16 @@ public class SplashScreen extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-
+//
             Intent IntentMain = new Intent(SplashScreen.this, MainActivity.class);
             startActivity(IntentMain);
+
+            asynDS.cancel(true);
+            asynDB.cancel(true);
+            asynSkip.cancel(true);
+            Log.d(TAG, "onPause: async cenceled");
+
+            Log.d(TAG, "onPostExecute:  intent");
         }
     }
 
@@ -418,8 +475,24 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        finish();
+
         asynDS.cancel(true);
         asynDB.cancel(true);
+        asynSkip.cancel(true);
+        Log.d(TAG, "onPause: async cenceled");
+        finish();
+        
+        
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        asynDS.cancel(true);
+        asynDB.cancel(true);
+        asynSkip.cancel(true);
+        Log.d(TAG, "onPause: async cenceled");
+        finish();
     }
 }

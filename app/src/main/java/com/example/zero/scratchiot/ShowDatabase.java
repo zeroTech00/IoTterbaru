@@ -19,6 +19,7 @@ import java.util.TimerTask;
 public class ShowDatabase extends AppCompatActivity {
 
     Timer timer1;
+
     private DataBaseListAdapter adapterList;
     private ListView listView;
 
@@ -125,5 +126,19 @@ public class ShowDatabase extends AppCompatActivity {
         }
 
         adapterList.setVariabelLists(variabelLists);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+//        runServer.cancel(true);
+//        Log.d(TAG, "onPause: canceled");
+//        timer1.cancel();
+//                Log.d(TAG, "onPause: canceled");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 }

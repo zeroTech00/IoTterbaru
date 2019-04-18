@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG, "==================================================");
         Log.d(TAG, "==================================================");
-        Log.d(TAG, "===================awal running===================");
+        Log.d(TAG, "===================awal running main===================");
 
         String IDdata = mDB.latest("ID");
 
@@ -168,6 +168,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             protected JSONObject doInBackground(String... strings) {
+
+                Log.d(TAG, "doInBackground1: =====================");
                 JSONParser jsonParser = new JSONParser();
                 JSONObject jsonObj;
                 JSONArray jsonArrayIDSelection;
@@ -199,8 +201,16 @@ public class MainActivity extends AppCompatActivity {
 
                     publishProgress(lastIDtoServer);
 
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                    Log.d(TAG, "NullPointerException m1: ");
+
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                    Log.d(TAG, "RuntimeException m1: ");
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Log.d(TAG, "JSONException m1: ");
                 }
 
                 return jsonObj;
@@ -210,12 +220,25 @@ public class MainActivity extends AppCompatActivity {
             protected void onPostExecute(JSONObject jsonObject) {
                 super.onPostExecute(jsonObject);
 
-                jsonObjectFromAsyn = jsonObject;
+                try{
 
-                String jsOBJ = jsonObject.toString();
+                    jsonObjectFromAsyn = jsonObject;
+
+                    String jsOBJ = jsonObject.toString();
 //                Log.d(TAG, "jsonObjectFromAsyn: " + jsonObjectFromAsyn);
 
-                new asyncSaveDatabase().execute();
+                    new asyncSaveDatabase().execute();
+
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                    Log.d(TAG, "NullPointerException m2: ");
+
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                    Log.d(TAG, "RuntimeException m2: ");
+                }
+
+
 
             }
         }
@@ -247,6 +270,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(JSONObject... jsonObjects) {
+            Log.d(TAG, "doInBackground 2: ================================ ");
 
             JSONArray jsonArrayDataBase;
 
@@ -310,8 +334,16 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.d(TAG, "suksesDatabase : " + suksesDatabase);
 
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+                Log.d(TAG, "NullPointerException m3: ");
+
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+                Log.d(TAG, "RuntimeException m3: ");
             } catch (JSONException e) {
                 e.printStackTrace();
+                Log.d(TAG, "JSONException m3: ");
             }
 
             Log.d(TAG, "==============================");
